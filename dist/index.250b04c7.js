@@ -381,6 +381,10 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
 }
 
 },{}],"3miIZ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _iconsSvg = require("url:../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+console.log(_iconsSvgDefault.default);
 const recipeContainer = document.querySelector(".recipe");
 const timeout = function(s) {
     return new Promise(function(_, reject) {
@@ -402,12 +406,90 @@ const showRecipe = async function() {
         const res = await fetch("https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886");
         const data = await res.json();
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-        console.log(res, data);
+        let { recipe  } = data.data;
+        recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cookingTime: recipe.cooking_time,
+            ingredients: recipe.ingredients
+        };
+        const html = `\n        <figure class="recipe__fig">\n            <img src="${recipe.image}" alt="Tomato" class="recipe__img" />\n            <h1 class="recipe__title">\n            <span>${recipe.title}</span>\n            </h1>\n        </figure>\n\n        <div class="recipe__details">\n            <div class="recipe__info">\n            <svg class="recipe__info-icon">\n                <use href="${_iconsSvgDefault.default}#icon-clock"></use>\n            </svg>\n            <span class="recipe__info-data recipe__info-data--minutes">${recipe.cookingTime}</span>\n            <span class="recipe__info-text">minutes</span>\n            </div>\n            <div class="recipe__info">\n            <svg class="recipe__info-icon">\n                <use href="${_iconsSvgDefault.default}#icon-users"></use>\n            </svg>\n            <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>\n            <span class="recipe__info-text">servings</span>\n\n            <div class="recipe__info-buttons">\n                <button class="btn--tiny btn--increase-servings">\n                <svg>\n                    <use href="${_iconsSvgDefault.default}#icon-minus-circle"></use>\n                </svg>\n                </button>\n                <button class="btn--tiny btn--increase-servings">\n                <svg>\n                    <use href="${_iconsSvgDefault.default}#icon-plus-circle"></use>\n                </svg>\n                </button>\n            </div>\n            </div>\n\n            <div class="recipe__user-generated">\n            <svg>\n                <use href="${_iconsSvgDefault.default}#icon-user"></use>\n            </svg>\n            </div>\n            <button class="btn--round">\n            <svg class="">\n                <use href="${_iconsSvgDefault.default}#icon-bookmark-fill"></use>\n            </svg>\n            </button>\n        </div>\n\n        <div class="recipe__ingredients">\n            <h2 class="heading--2">Recipe ingredients</h2>\n            <ul class="recipe__ingredient-list">\n                ${recipe.ingredients.map((ing)=>{
+            return `\n                    <li class="recipe__ingredient">\n                        <svg class="recipe__icon">\n                        <use href="${_iconsSvgDefault.default}#icon-check"></use>\n                        </svg>\n                        <div class="recipe__quantity">${ing.quantity}</div>\n                        <div class="recipe__description">\n                        <span class="recipe__unit">${ing.unit}</span>\n                        ${ing.description}\n                    </div>\n                </li>\n                    `;
+        })}\n\n            </ul>\n        </div>\n\n        <div class="recipe__directions">\n            <h2 class="heading--2">How to cook it</h2>\n            <p class="recipe__directions-text">\n            This recipe was carefully designed and tested by\n            <span class="recipe__publisher">The Pioneer Woman</span>. Please check out\n            directions at their website.\n            </p>\n            <a\n            class="btn--small recipe__btn"\n            href="http://thepioneerwoman.com/cooking/pasta-with-tomato-cream-sauce/"\n            target="_blank"\n            >\n            <span>Directions</span>\n            <svg class="search__icon">\n                <use href="${_iconsSvgDefault.default}#icon-arrow-right"></use>\n            </svg>\n            </a>\n        </div>\n        `;
+        recipeContainer.innerHTML = "";
+        recipeContainer.insertAdjacentHTML("afterbegin", html);
     } catch (error) {
         alert(error);
     }
 };
 showRecipe();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR","url:../img/icons.svg":"3t5dV"}],"367CR":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"3t5dV":[function(require,module,exports) {
+module.exports = require('./bundle-url').getBundleURL() + "icons.d4a14980.svg";
+
+},{"./bundle-url":"3seVR"}],"3seVR":[function(require,module,exports) {
+"use strict";
+/* globals document:readonly */ var bundleURL = null;
+function getBundleURLCached() {
+    if (!bundleURL) bundleURL = getBundleURL();
+    return bundleURL;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+        if (matches) return getBaseURL(matches[0]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    let matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
 
 },{}]},["1WnDs","3miIZ"], "3miIZ", "parcelRequirefade")
 

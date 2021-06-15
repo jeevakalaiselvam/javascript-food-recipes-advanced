@@ -111,7 +111,7 @@ body {
 }
 
 .btn--inline {
-  color: #f38e82;
+  color: #e52a5a;
   font-size: 1.3rem;
   font-weight: 600;
   border: none;
@@ -174,7 +174,7 @@ body {
 .btn--tiny svg {
   height: 100%;
   width: 100%;
-  fill: #f38e82;
+  fill: #e52a5a;
   transition: all 0.3s;
 }
 .btn--tiny:focus {
@@ -195,7 +195,7 @@ body {
 .heading--2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #f38e82;
+  color: #e52a5a;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
@@ -213,7 +213,7 @@ body {
 .spinner svg {
   height: 6rem;
   width: 6rem;
-  fill: #f38e82;
+  fill: #e52a5a;
   animation: rotate 2s infinite linear;
 }
 
@@ -236,7 +236,7 @@ body {
 .error svg {
   height: 3rem;
   width: 3rem;
-  fill: #f38e82;
+  fill: #e52a5a;
   transform: translateY(-0.3rem);
 }
 .message p,
@@ -329,7 +329,7 @@ body {
 .nav__btn svg {
   height: 2.4rem;
   width: 2.4rem;
-  fill: #f38e82;
+  fill: #e52a5a;
   margin-right: 0.7rem;
   transform: translateY(-1px);
 }
@@ -423,7 +423,7 @@ body {
 .preview__title {
   grid-column: 1/-1;
   font-size: 1.45rem;
-  color: #f38e82;
+  color: #e52a5a;
   text-transform: uppercase;
   font-weight: 600;
   text-overflow: ellipsis;
@@ -451,7 +451,7 @@ body {
 .preview__user-generated svg {
   height: 1.2rem;
   width: 1.2rem;
-  fill: #f38e82;
+  fill: #e52a5a;
 }
 
 .search-results {
@@ -558,7 +558,7 @@ body {
 .recipe__info-icon {
   height: 2.35rem;
   width: 2.35rem;
-  fill: #f38e82;
+  fill: #e52a5a;
   margin-right: 1.15rem;
 }
 .recipe__info-data {
@@ -584,7 +584,7 @@ body {
 .recipe__user-generated svg {
   height: 2.25rem;
   width: 2.25rem;
-  fill: #f38e82;
+  fill: #e52a5a;
 }
 .recipe__ingredients {
   padding: 5rem 8rem;
@@ -607,7 +607,7 @@ body {
 .recipe__icon {
   height: 2rem;
   width: 2rem;
-  fill: #f38e82;
+  fill: #e52a5a;
   margin-right: 1.1rem;
   flex: 0 0 auto;
   margin-top: 0.1rem;
@@ -703,7 +703,7 @@ body {
 }
 .upload__column input:focus {
   outline: none;
-  border: 1px solid #f38e82;
+  border: 1px solid #e52a5a;
   background-color: #f9f5f3;
 }
 .upload__column button {
