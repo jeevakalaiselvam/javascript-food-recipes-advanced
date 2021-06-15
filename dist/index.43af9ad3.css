@@ -34,6 +34,20 @@ html {
   color: white;
 }
 
+.icon-spinner {
+  font-size: 10rem;
+  color: #e52a5a;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   font-family: "Rubik", sans-serif;
   font-weight: 400;

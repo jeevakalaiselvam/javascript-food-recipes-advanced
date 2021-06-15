@@ -397,12 +397,13 @@ const timeout = function(s) {
 //https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886
 ///////////////////////////////////////
 const renderSpinner = function(parentEl) {
-    const markup = `\n    <div class="spinner">\n        <i class="fas fa-circle-notch"></i>\n    </div>`;
+    const markup = `\n    <div class="spinner">\n        <i class="fas fa-circle-notch icon-spinner"></i>\n    </div>`;
     parentEl.innerHTML = "";
-    parentEl.insertAdjacentHtml("afterend", markup);
+    parentEl.insertAdjacentHTML("afterbegin", markup);
 };
 const showRecipe = async function() {
     try {
+        renderSpinner(recipeContainer);
         const res = await fetch("https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886");
         const data = await res.json();
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);

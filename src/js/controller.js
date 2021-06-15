@@ -20,15 +20,16 @@ const timeout = function (s) {
 const renderSpinner = function (parentEl) {
     const markup = `
     <div class="spinner">
-        <i class="fas fa-circle-notch"></i>
+        <i class="fas fa-circle-notch icon-spinner"></i>
     </div>`;
 
     parentEl.innerHTML = "";
-    parentEl.insertAdjacentHtml("afterend", markup);
+    parentEl.insertAdjacentHTML("afterbegin", markup);
 };
 
 const showRecipe = async function () {
     try {
+        renderSpinner(recipeContainer);
         const res = await fetch(
             "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
         );
