@@ -381,16 +381,29 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
 }
 
 },{}],"3miIZ":[function(require,module,exports) {
-const recipeContainer = document.querySelector('.recipe');
+const recipeContainer = document.querySelector(".recipe");
 const timeout = function(s) {
     return new Promise(function(_, reject) {
         setTimeout(function() {
             reject(new Error(`Request took too long! Timeout after ${s} second`));
         }, s * 1000);
     });
-}; // https://forkify-api.herokuapp.com/v2
- ///////////////////////////////////////
+};
+//https://forkify-api.herokuapp.com/v2
+//https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886
+///////////////////////////////////////
+const showRecipe = async function() {
+    try {
+        const res = await fetch("https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886");
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+        console.log(res, data);
+    } catch (error) {
+        alert(error);
+    }
+};
+showRecipe();
 
-},{}]},["1WnDs","3miIZ"], "3miIZ", "parcelRequire5bf6")
+},{}]},["1WnDs","3miIZ"], "3miIZ", "parcelRequirefade")
 
 //# sourceMappingURL=index.250b04c7.js.map
