@@ -15,6 +15,16 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
+const renderSpinner = function (parentEl) {
+    const markup = `
+    <div class="spinner">
+        <i class="fas fa-circle-notch"></i>
+    </div>`;
+
+    parentEl.innerHTML = "";
+    parentEl.insertAdjacentHtml("afterend", markup);
+};
+
 const showRecipe = async function () {
     try {
         const res = await fetch(
