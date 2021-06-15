@@ -9,6 +9,13 @@
             rel="stylesheet"
         />
         <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
             rel="shortcut icon"
             href="src/img/favicon.png"
             type="image/x-icon"
@@ -31,9 +38,7 @@
                         placeholder="Search over 1,000,000 recipes..."
                     />
                     <button class="btn search__btn">
-                        <svg class="search__icon">
-                            <use href="src/img/icons.svg#icon-search"></use>
-                        </svg>
+                        <i class="fas fa-search icon-main icon-main-search"></i>
                         <span>Search</span>
                     </button>
                 </form>
@@ -42,33 +47,18 @@
                     <ul class="nav__list">
                         <li class="nav__item">
                             <button class="nav__btn nav__btn--add-recipe">
-                                <svg class="nav__icon">
-                                    <use
-                                        href="src/img/icons.svg#icon-edit"
-                                    ></use>
-                                </svg>
+                                <i class="fas fa-plus icon-main"></i>
                                 <span>Add recipe</span>
                             </button>
                         </li>
                         <li class="nav__item">
                             <button class="nav__btn nav__btn--bookmarks">
-                                <svg class="nav__icon">
-                                    <use
-                                        href="src/img/icons.svg#icon-bookmark"
-                                    ></use>
-                                </svg>
-                                <span>Bookmarks</span>
+                                <i class="fas fa-bookmark icon-main"></i>
+                                <span> Bookmarks</span>
                             </button>
                             <div class="bookmarks">
                                 <ul class="bookmarks__list">
                                     <div class="message">
-                                        <div>
-                                            <svg>
-                                                <use
-                                                    href="src/img/icons.svg#icon-smile"
-                                                ></use>
-                                            </svg>
-                                        </div>
                                         <p>
                                             No bookmarks yet. Find a nice recipe
                                             and bookmark it :)
@@ -84,7 +74,7 @@
                         <h4 class="preview__name">
                           Pasta with Tomato Cream ...
                         </h4>
-                        <p class="preview__author">The Pioneer Woman</p>
+                        <p class="preview__publisher">The Pioneer Woman</p>
                       </div>
                     </a>
                   </li> -->
@@ -277,23 +267,13 @@
                 <div class="upload__column">
                     <h3 class="upload__heading">Recipe data</h3>
                     <label>Title</label>
-                    <input value="TEST23" required name="title" type="text" />
+                    <input value="TEST" required name="title" type="text" />
                     <label>URL</label>
-                    <input
-                        value="TEST23"
-                        required
-                        name="sourceUrl"
-                        type="text"
-                    />
+                    <input value="TEST" required name="sourceUrl" type="text" />
                     <label>Image URL</label>
-                    <input value="TEST23" required name="image" type="text" />
+                    <input value="TEST" required name="image" type="text" />
                     <label>Publisher</label>
-                    <input
-                        value="TEST23"
-                        required
-                        name="publisher"
-                        type="text"
-                    />
+                    <input value="TEST" required name="publisher" type="text" />
                     <label>Prep time</label>
                     <input
                         value="23"

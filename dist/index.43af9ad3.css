@@ -19,6 +19,17 @@ html {
   }
 }
 
+.icon-main {
+  font-size: 2rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  color: #e52a5a;
+}
+
+.icon-main-search {
+  color: white;
+}
+
 body {
   font-family: "Rubik", sans-serif;
   font-weight: 400;
