@@ -1,5 +1,8 @@
+import * as model from "./model.js";
 import icons from "url:../img/icons.svg";
-console.log(icons);
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 const recipeContainer = document.querySelector(".recipe");
 
 const timeout = function (s) {
@@ -28,27 +31,17 @@ const renderSpinner = function (parentEl) {
 };
 
 const showRecipe = async function () {
-    try {
-        renderSpinner(recipeContainer);
-        const res = await fetch(
-            "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
-        );
-        const data = await res.json();
-        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    let id = window.location.hash.slice(1);
+    console.log(id);
 
-        let { recipe } = data.data;
-        recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients,
-        };
+    if (!id) return;
 
-        const html = `
+    renderSpinner(recipeContainer);
+
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
+
+    const html = `
         <figure class="recipe__fig">
             <img src="${recipe.image}" alt="Tomato" class="recipe__img" />
             <h1 class="recipe__title">
@@ -142,11 +135,8 @@ const showRecipe = async function () {
         </div>
         `;
 
-        recipeContainer.innerHTML = "";
-        recipeContainer.insertAdjacentHTML("afterbegin", html);
-    } catch (error) {
-        alert(error);
-    }
+    recipeContainer.innerHTML = "";
+    recipeContainer.insertAdjacentHTML("afterbegin", html);
 };
 
-showRecipe();
+["hashchange", "load"].forEach((ev) => window.addEventListener(ev, showRecipe));
