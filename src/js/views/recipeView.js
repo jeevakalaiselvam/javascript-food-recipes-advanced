@@ -13,7 +13,7 @@ class RecipeView extends View {
         );
     }
 
-    addHandlerChangeServings(handler) {
+    addHandlerUpdateServings(handler) {
         this._parentElement.addEventListener("click", function (e) {
             const button = e.target.closest(".btn--update-servings");
             if (!button) return;
@@ -33,10 +33,6 @@ class RecipeView extends View {
     //Update only the data needed
     //NOTE - Performance implications on complex projects
     update(data) {
-        console.log(data);
-        if (!data || (Array.isArray(data) && data.length === 0))
-            return this.renderError();
-
         this._data = data;
         const newMarkup = this._generateMarkup();
         const newDOM = document
