@@ -26,16 +26,11 @@ html {
   color: #e52a5a;
 }
 
-.icon-spinner {
-  font-size: 2rem;
-}
-
 .icon-main-search {
   color: white;
 }
 
 .icon-spinner {
-  font-size: 10rem;
   color: #e52a5a;
   animation: rotate 2s infinite linear;
 }

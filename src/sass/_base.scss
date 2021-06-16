@@ -43,16 +43,11 @@ html {
     color: $color-grad-1;
 }
 
-.icon-spinner {
-    font-size: 2rem;
-}
-
 .icon-main-search {
     color: white;
 }
 
 .icon-spinner {
-    font-size: 10rem;
     color: $color-grad-1;
     animation: rotate 2s infinite linear;
 }

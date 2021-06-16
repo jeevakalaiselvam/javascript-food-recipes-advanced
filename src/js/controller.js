@@ -3,6 +3,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
+import resultsView from "./views/resultsView.js";
 
 const controlRecipe = async function () {
     let id = window.location.hash.slice(1);
@@ -23,6 +24,8 @@ const controlRecipe = async function () {
 };
 
 const controlSearchResults = async function () {
+    resultsView.renderSpinner("5rem");
+
     try {
         const query = searchView.getQuery();
         await model.loadSearchResults(query);
