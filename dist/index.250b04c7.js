@@ -390,7 +390,7 @@ var _recipeViewDefault = parcelHelpers.interopDefault(_recipeView);
 //https://forkify-api.herokuapp.com/v2
 //https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886
 ///////////////////////////////////////
-const showRecipe = async function() {
+const controlRecipe = async function() {
     let id = window.location.hash.slice(1);
     if (!id) return;
     _recipeViewDefault.default.renderSpinner();
@@ -399,11 +399,10 @@ const showRecipe = async function() {
     //2.Rendering recipe
     _recipeViewDefault.default.render(_modelJs.state.recipe);
 };
-[
-    "hashchange",
-    "load"
-].forEach((ev)=>window.addEventListener(ev, showRecipe)
-);
+const init = function() {
+    _recipeViewDefault.default.addHandlerRender(controlRecipe);
+};
+init();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"367CR","core-js/stable":"1PFvP","regenerator-runtime/runtime":"62Qib","./model.js":"1hp6y","./views/recipeView":"9e6b9"}],"367CR":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -12302,6 +12301,13 @@ class RecipeView {
         const spinner = `\n            <div class="spinner">\n                <i class="fas fa-circle-notch icon-spinner"></i>\n            </div>`;
         this.#clear();
         this.#parentElement.insertAdjacentHTML("afterbegin", spinner);
+    }
+    addHandlerRender(handler) {
+        [
+            "hashchange",
+            "load"
+        ].forEach((ev)=>window.addEventListener(ev, handler)
+        );
     }
      #generateMarkup() {
         return `\n        <figure class="recipe__fig">\n            <img src="${this.#data.image}" alt="Tomato" class="recipe__img" />\n            <h1 class="recipe__title">\n            <span>${this.#data.title}</span>\n            </h1>\n        </figure>\n\n        <div class="recipe__details">\n            <div class="recipe__info">\n            <svg class="recipe__info-icon">\n                <use href="${_iconsSvgDefault.default}#icon-clock"></use>\n            </svg>\n            <span class="recipe__info-data recipe__info-data--minutes">${this.#data.cookingTime}</span>\n            <span class="recipe__info-text">minutes</span>\n            </div>\n            <div class="recipe__info">\n            <svg class="recipe__info-icon">\n                <use href="${_iconsSvgDefault.default}#icon-users"></use>\n            </svg>\n            <span class="recipe__info-data recipe__info-data--people">${this.#data.servings}</span>\n            <span class="recipe__info-text">servings</span>\n\n            <div class="recipe__info-buttons">\n                <button class="btn--tiny btn--increase-servings">\n                <svg>\n                    <use href="${_iconsSvgDefault.default}#icon-minus-circle"></use>\n                </svg>\n                </button>\n                <button class="btn--tiny btn--increase-servings">\n                <svg>\n                    <use href="${_iconsSvgDefault.default}#icon-plus-circle"></use>\n                </svg>\n                </button>\n            </div>\n            </div>\n\n            <div class="recipe__user-generated">\n            <svg>\n                <use href="${_iconsSvgDefault.default}#icon-user"></use>\n            </svg>\n            </div>\n            <button class="btn--round">\n            <svg class="">\n                <use href="${_iconsSvgDefault.default}#icon-bookmark-fill"></use>\n            </svg>\n            </button>\n        </div>\n\n        <div class="recipe__ingredients">\n            <h2 class="heading--2">Recipe ingredients</h2>\n            <ul class="recipe__ingredient-list">\n                ${this.#data.ingredients.map((ingredient)=>{

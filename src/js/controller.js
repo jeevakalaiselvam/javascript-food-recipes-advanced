@@ -8,7 +8,7 @@ import recipeView from "./views/recipeView";
 
 ///////////////////////////////////////
 
-const showRecipe = async function () {
+const controlRecipe = async function () {
     let id = window.location.hash.slice(1);
 
     if (!id) return;
@@ -22,4 +22,7 @@ const showRecipe = async function () {
     recipeView.render(model.state.recipe);
 };
 
-["hashchange", "load"].forEach((ev) => window.addEventListener(ev, showRecipe));
+const init = function () {
+    recipeView.addHandlerRender(controlRecipe);
+};
+init();
