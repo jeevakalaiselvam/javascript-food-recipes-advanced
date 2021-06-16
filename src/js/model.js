@@ -12,6 +12,13 @@ export const state = {
     },
 };
 
+export const updateServing = function (newServing) {
+    state.recipe.ingredients.forEach((ing) => {
+        ing.quantity = (ing.quantity * newServing) / state.recipe.servings;
+    });
+    state.recipe.servings = newServing;
+};
+
 export const loadRecipe = async function (id) {
     try {
         //Get data from the internet
