@@ -38,7 +38,7 @@ const controlSearchResults = async function () {
         //3.Render pagination
         paginationView.render(model.state.search);
     } catch (error) {
-        console.error(error, "💥");
+        console.log(error);
     }
 };
 
@@ -54,7 +54,7 @@ const controlChangeServing = function (newServing) {
 
 const controlBookmark = function () {
     model.addBookmark(model.state.recipe);
-    recipeView.render(model.state.recipe);
+    recipeView.update(model.state.recipe);
 };
 
 const init = function () {

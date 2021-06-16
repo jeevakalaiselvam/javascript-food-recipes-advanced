@@ -6,33 +6,35 @@ class ResultsView extends View {
     _message = "Success!";
 
     _generateMarkup() {
-        return `
-            ${this._data
-                .map((recipe) => {
-                    return `<li class="preview">
+        return this._data.map(this._generateMarkupPreview).join("");
+    }
+
+    _generateMarkupPreview(result) {
+        try {
+            const id = window.location.hash.slice(1);
+            return `<li class="preview">
                     <a
-                        class="preview__link preview__link--active"
-                        href="#${recipe.id}"
+                        class="preview__link ${
+                            result.id === id ? "preview__link--active" : ""
+                        }"
+                        href="#${result.id}"
                     >
                         <figure class="preview__fig">
-                            <img src="${recipe.image}" alt="Test" />
+                            <img src="${result.image}" alt="Test" />
                         </figure>
                         <div class="preview__data">
                             <h4 class="preview__title">
-                                ${recipe.title} ...
+                                ${result.title} ...
                             </h4>
-                            <p class="preview__publisher">${recipe.publisher}</p>
-                            <div class="preview__user-generated">
-                                <svg>
-                                    <use href="${icons}#icon-user"></use>
-                                </svg>
-                            </div>
+                            <p class="preview__publisher">${
+                                result.publisher
+                            }</p>
                         </div>
                     </a>
                 </li>`;
-                })
-                .join("")}
-        `;
+        } catch (err) {
+            throw err;
+        }
     }
 }
 
