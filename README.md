@@ -4,7 +4,7 @@ A simple cooking recipes application using Javascript
 
 # Live Version
 
-[CHECK APPLICATION](https://jeevakalaiselvam.github.io/javascript-food-recipes-advanced/)
+[CHECK APPLICATION](https://recipes-jeeva.netlify.app//)
 
 # Screenshots
 
