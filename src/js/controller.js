@@ -25,10 +25,14 @@ const controlRecipe = async function () {
 
 const controlSearchResults = async function () {
     resultsView.renderSpinner("5rem");
-
     try {
         const query = searchView.getQuery();
+
+        //1.Loading search results
         await model.loadSearchResults(query);
+
+        //2.Rendering search results
+        resultsView.render(model.getSearchResultsPage(1));
     } catch (error) {
         console.error(error, "💥");
     }
