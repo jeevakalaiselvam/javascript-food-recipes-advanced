@@ -34,6 +34,8 @@ const controlSearchResults = async function () {
 
         //2.Rendering search results
         resultsView.render(model.getSearchResultsPage());
+
+        //3.Render pagination
         paginationView.render(model.state.search);
     } catch (error) {
         console.error(error, "💥");

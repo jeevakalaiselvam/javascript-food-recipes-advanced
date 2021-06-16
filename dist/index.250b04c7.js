@@ -414,6 +414,7 @@ const controlSearchResults = async function() {
         await _modelJs.loadSearchResults(query);
         //2.Rendering search results
         _resultsViewJsDefault.default.render(_modelJs.getSearchResultsPage());
+        //3.Render pagination
         _paginationViewJsDefault.default.render(_modelJs.state.search);
     } catch (error) {
         console.error(error, "💥");
