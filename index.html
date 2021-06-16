@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="src/sass/main.scss" />
         <script defer src="src/js/controller.js"></script>
 
-        <title>forkify // Search over 1,000,000 recipes</title>
+        <title>RECIPES</title>
     </head>
 
     <body>
@@ -255,22 +255,53 @@
                 <div class="upload__column">
                     <h3 class="upload__heading">Recipe data</h3>
                     <label>Title</label>
-                    <input value="TEST" required name="title" type="text" />
+                    <input
+                        value="TEST"
+                        required
+                        name="title"
+                        type="text"
+                        class="input-style"
+                    />
                     <label>URL</label>
-                    <input value="TEST" required name="sourceUrl" type="text" />
+                    <input
+                        value="TEST"
+                        required
+                        name="sourceUrl"
+                        type="text"
+                        class="input-style"
+                    />
                     <label>Image URL</label>
-                    <input value="TEST" required name="image" type="text" />
+                    <input
+                        value="TEST"
+                        required
+                        name="image"
+                        type="text"
+                        class="input-style"
+                    />
                     <label>Publisher</label>
-                    <input value="TEST" required name="publisher" type="text" />
+                    <input
+                        value="TEST"
+                        required
+                        name="publisher"
+                        type="text"
+                        class="input-style"
+                    />
                     <label>Prep time</label>
                     <input
                         value="23"
                         required
                         name="cookingTime"
                         type="number"
+                        class="input-style"
                     />
                     <label>Servings</label>
-                    <input value="23" required name="servings" type="number" />
+                    <input
+                        value="23"
+                        required
+                        name="servings"
+                        type="number"
+                        class="input-style"
+                    />
                 </div>
 
                 <div class="upload__column">
@@ -282,6 +313,7 @@
                         required
                         name="ingredient-1"
                         placeholder="Format: 'Quantity,Unit,Description'"
+                        class="input-style"
                     />
                     <label>Ingredient 2</label>
                     <input
@@ -289,6 +321,7 @@
                         type="text"
                         name="ingredient-2"
                         placeholder="Format: 'Quantity,Unit,Description'"
+                        class="input-style"
                     />
                     <label>Ingredient 3</label>
                     <input
@@ -296,31 +329,35 @@
                         type="text"
                         name="ingredient-3"
                         placeholder="Format: 'Quantity,Unit,Description'"
+                        class="input-style"
                     />
                     <label>Ingredient 4</label>
                     <input
                         type="text"
                         name="ingredient-4"
                         placeholder="Format: 'Quantity,Unit,Description'"
+                        class="input-style"
                     />
                     <label>Ingredient 5</label>
                     <input
                         type="text"
                         name="ingredient-5"
                         placeholder="Format: 'Quantity,Unit,Description'"
+                        class="input-style"
                     />
                     <label>Ingredient 6</label>
                     <input
                         type="text"
                         name="ingredient-6"
                         placeholder="Format: 'Quantity,Unit,Description'"
+                        class="input-style"
                     />
                 </div>
 
                 <button class="btn upload__btn">
-                    <svg>
-                        <use href="src/img/icons.svg#icon-upload-cloud"></use>
-                    </svg>
+                    <i
+                        class="fas fa-file-upload icon-main icon-main-search"
+                    ></i>
                     <span>Upload</span>
                 </button>
             </form>

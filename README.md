@@ -4,7 +4,7 @@ A simple cooking recipes application using Javascript
 
 # Live Version
 
-[CHECK WEBSITE](https://jeevakalaiselvam.github.io/javascript-country-info/)
+[CHECK APPLICATION](https://jeevakalaiselvam.github.io/javascript-food-recipes-advanced/)
 
 # Screenshots
 
@@ -12,4 +12,3 @@ A simple cooking recipes application using Javascript
 ![Screenshot](screens/screen2.png)
 ![Screenshot](screens/screen3.png)
 ![Screenshot](screens/screen4.png)
-![Screenshot](screens/screen5.png)

@@ -35,6 +35,10 @@ html {
   animation: rotate 2s infinite linear;
 }
 
+.input-style {
+  font-family: inherit;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0);
