@@ -49,12 +49,18 @@ const controlPagination = function (number) {
 
 const controlChangeServing = function (newServing) {
     model.updateServing(newServing);
+    recipeView.update(model.state.recipe);
+};
+
+const controlBookmark = function () {
+    model.addBookmark(model.state.recipe);
     recipeView.render(model.state.recipe);
 };
 
 const init = function () {
     recipeView.addHandlerRender(controlRecipe);
     recipeView.addHandlerChangeServings(controlChangeServing);
+    recipeView.addHandlerAddBookmark(controlBookmark);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);
 };

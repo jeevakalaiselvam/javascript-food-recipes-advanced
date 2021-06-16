@@ -10,6 +10,7 @@ export const state = {
         resultsPerPage: RESULTS_PER_PAGE,
         page: 1,
     },
+    bookmarks: [],
 };
 
 export const updateServing = function (newServing) {
@@ -58,7 +59,7 @@ export const loadSearchResults = async function (query) {
             };
         });
 
-        console.log("STATE", this.state);
+        state.search.page = 1;
     } catch (err) {
         throw err;
     }
@@ -69,4 +70,12 @@ export const getSearchResultsPage = function (page = state.search.page) {
     let start = (page - 1) * RESULTS_PER_PAGE;
     let end = page * RESULTS_PER_PAGE;
     return state.search.results.slice(start, end);
+};
+
+export const addBookmark = function (recipe) {
+    //Add the bookmark
+    state.bookmarks.push(recipe);
+
+    //Check if current recipe is bookmark
+    if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 };

@@ -11,6 +11,9 @@ export default class View {
         this._parentElement.insertAdjacentHTML("afterbegin", container);
     }
 
+    //TODO Implement diff update later
+    update(data) {}
+
     _clear() {
         this._parentElement.innerHTML = "";
     }

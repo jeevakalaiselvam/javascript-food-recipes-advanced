@@ -17,7 +17,52 @@ class RecipeView extends View {
         this._parentElement.addEventListener("click", function (e) {
             const button = e.target.closest(".btn--update-servings");
             if (!button) return;
-            handler(+button.dataset.updateServing);
+            if (+button.dataset.updateServing > 0)
+                handler(+button.dataset.updateServing);
+        });
+    }
+
+    addHandlerAddBookmark(handler) {
+        this._parentElement.addEventListener("click", function (e) {
+            const btn = e.target.closest(".btn--round");
+            if (!btn) return;
+            handler();
+        });
+    }
+
+    //Update only the data needed
+    update(data) {
+        console.log(data);
+        if (!data || (Array.isArray(data) && data.length === 0))
+            return this.renderError();
+
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+        const newDOM = document
+            .createRange()
+            .createContextualFragment(newMarkup);
+        const newElements = Array.from(newDOM.querySelectorAll("*"));
+        const curElements = Array.from(
+            this._parentElement.querySelectorAll("*")
+        );
+
+        newElements.forEach((newEl, i) => {
+            const curEL = curElements[i];
+
+            //Update changed text
+            if (
+                !newEl.isEqualNode(curEL) &&
+                newEl.firstChild?.nodeValue.trim() !== ""
+            ) {
+                curEL.textContent = newEl.textContent;
+            }
+
+            //Update changes attributes
+            if (!newEl.isEqualNode(curEL)) {
+                Array.from(newEl.attributes).forEach((attr) =>
+                    curEL.setAttribute(attr.name, attr.value)
+                );
+            }
         });
     }
 
@@ -74,7 +119,9 @@ class RecipeView extends View {
             </div>
             <button class="btn--round">
             <svg class="">
-                <use href="${icons}#icon-bookmark-fill"></use>
+                <use href="${icons}#icon-bookmark${
+            this._data.bookmarked ? "-fill" : ""
+        }"></use>
             </svg>
             </button>
         </div>
