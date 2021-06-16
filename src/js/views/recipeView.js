@@ -31,6 +31,7 @@ class RecipeView extends View {
     }
 
     //Update only the data needed
+    //NOTE - Performance implications on complex projects
     update(data) {
         console.log(data);
         if (!data || (Array.isArray(data) && data.length === 0))
